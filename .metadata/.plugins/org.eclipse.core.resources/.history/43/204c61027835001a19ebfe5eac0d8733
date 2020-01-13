@@ -1,0 +1,115 @@
+package aula05;
+
+public class ContaBanco {
+	public int numConta;
+	protected String tipo;
+	private String dono;
+	private float saldo;
+	private boolean status;
+
+	public ContaBanco(float saldo, boolean status) {
+		this.setSaldo (0.00f);
+		this.setStatus (false);
+	}
+
+	public void abrirConta(String tipo) {
+		this.setTipo(tipo);
+		this.setStatus(true);
+		if (tipo == "CC") {
+			this.setSaldo (50);
+		} else if (tipo == "CP") {
+			this.setSaldo (150);
+		}
+	}
+
+	public void fecharConta() {
+		if (this.saldo != 0) {
+			System.out.println(
+					"Só é possível fechar a conta com saldo zerado! Sua conta possui o saldo de R$" + getSaldo());
+		} else {
+			this.setStatus (false);
+			System.out.println("A conta foi fechada com sucesso");
+		}
+	}
+
+	public void depositar(float qtdDeposito) {
+		if (this.status == false) {
+			System.out.println("Não há conta aberta para depósito!");
+		} else {
+			System.out.println("Digite a quantidade a ser depositada");
+			qtdDeposito = sc.nextFloat();
+			System.out.println("Você fez um depósito de R$" + qtdDeposito);
+			System.out.println("Seu novo saldo é : " + getSaldo());
+		}
+	}
+
+	public void sacar(float qtdSaque) {
+		if (this.status == false) {
+			System.out.println("Não há conta aberta para saque!");
+		} else {
+			if (this.saldo <= 0.00f) {
+				System.out.println("Não é possível realizar o saque. O saldo da sua conta é R$:" + this.saldo);
+			} else {
+				System.out.println("Digite a quantidade a ser sacada");
+				qtdSaque = sc.nextFloat();
+				if (qtdSaque > this.saldo) {
+					System.out.println(
+							"Não é possível realizar o saque. A quantidade digitada é maior que o saldo da sua conta");
+					System.out.println("Seu saldo atual é de R$" + getSaldo());
+				} else {
+					this.saldo -= qtdSaque;
+					System.out.println("Você fez um saque de R$" + qtdSaque);
+					System.out.println("Seu novo saldo é : " + getSaldo());
+				}
+			}
+		}
+	}
+
+	public void pagarMensal() {
+		if (this.tipo == "cc") {
+			this.saldo -= 12.00f;
+		} else {
+			this.saldo -= 15.00f;
+		}
+	}
+
+	public int getNumConta() {
+		return numConta;
+	}
+
+	public void setNumConta(int numConta) {
+		this.numConta = numConta;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	public String getDono() {
+		return dono;
+	}
+
+	public void setDono(String dono) {
+		this.dono = dono;
+	}
+
+	public float getSaldo() {
+		return saldo;
+	}
+
+	public void setSaldo(float saldo) {
+		this.saldo = saldo;
+	}
+
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+}

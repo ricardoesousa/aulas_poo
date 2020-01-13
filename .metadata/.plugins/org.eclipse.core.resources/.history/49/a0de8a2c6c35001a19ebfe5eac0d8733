@@ -1,0 +1,13 @@
+package aula05;
+
+import aula05.ContaBanco;
+
+public class Aula05 {
+
+	public static void main(String[] args) {
+		ContaBanco jubileu = new ContaBanco(0, false);
+		
+		jubileu.depositar();
+	}
+	
+}
