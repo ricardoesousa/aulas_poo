@@ -11,27 +11,27 @@ public class ControleRemoto implements Controlador {
 		this.tocando = false;
 	}
 
-	private int getVolume() {
+	public int getVolume() {
 		return volume;
 	}
 
-	private void setVolume(int volume) {
+	public void setVolume(int volume) {
 		this.volume = volume;
 	}
 
-	private boolean isLigado() {
+	public boolean isLigado() {
 		return ligado;
 	}
 
-	private void setLigado(boolean ligado) {
+	public void setLigado(boolean ligado) {
 		this.ligado = ligado;
 	}
 
-	private boolean isTocando() {
+	public boolean isTocando() {
 		return tocando;
 	}
 
-	private void setTocando(boolean tocando) {
+	public void setTocando(boolean tocando) {
 		this.tocando = tocando;
 	}
 
